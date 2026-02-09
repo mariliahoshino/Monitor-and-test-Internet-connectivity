@@ -1,37 +1,5 @@
 # Monitor-and-test-Internet-connectivity
 
-## Fluxo de funcionamento
-
-```mermaid
-flowchart TD
-
-A[Inicialização do ESP32] --> B[Testa R1]
-B --> C[Testa R2]
-C --> D[Testa R3]
-
-D --> E[Atualiza status dos links]
-
-E --> F{Mudou o estado dos links?}
-
-F -- Sim --> G[Ativa buzzer e sinaleira]
-G --> H[Envia mensagem no Telegram]
-
-F -- Não --> I[Aguarda intervalo]
-
-H --> I
-
-I --> J{Durante espera}
-
-J --> K[Leitura botão ACK]
-J --> L[Controle buzzer/sinaleira]
-J --> M[Verifica comandos Telegram]
-
-K --> N[Volta para novo ciclo]
-L --> N
-M --> N
-
-N --> B
-```
 
 <p data-start="308" data-end="438">Sistema de monitoramento de múltiplas conexões de internet usando <strong data-start="374" data-end="391">ESP32 + W5500</strong>, com alarme local e notificações via Telegram.</p>
 <h2 data-start="440" data-end="454">Visão geral</h2>
@@ -87,6 +55,38 @@ Quando um link falha, o sistema:</p>
 </ul>
 
 
+## Fluxo de funcionamento
+
+```mermaid
+flowchart TD
+
+A[Inicialização do ESP32] --> B[Testa R1]
+B --> C[Testa R2]
+C --> D[Testa R3]
+
+D --> E[Atualiza status dos links]
+
+E --> F{Mudou o estado dos links?}
+
+F -- Sim --> G[Ativa buzzer e sinaleira]
+G --> H[Envia mensagem no Telegram]
+
+F -- Não --> I[Aguarda intervalo]
+
+H --> I
+
+I --> J{Durante espera}
+
+J --> K[Leitura botão ACK]
+
+K --> L[Controle buzzer/sinaleira]
+
+L --> M[Verifica comandos Telegram]
+
+M --> N [Volta para novo ciclo]
+
+N --> B
+```
 
 
 
