@@ -1,5 +1,38 @@
 # Monitor-and-test-Internet-connectivity
 
+## Fluxo de funcionamento
+
+```mermaid
+flowchart TD
+
+A[Inicialização do ESP32] --> B[Testa R1]
+B --> C[Testa R2]
+C --> D[Testa R3]
+
+D --> E[Atualiza status dos links]
+
+E --> F{Mudou o estado dos links?}
+
+F -- Sim --> G[Ativa buzzer e sinaleira]
+G --> H[Envia mensagem no Telegram]
+
+F -- Não --> I[Aguarda intervalo]
+
+H --> I
+
+I --> J{Durante espera}
+
+J --> K[Leitura botão ACK]
+J --> L[Controle buzzer/sinaleira]
+J --> M[Verifica comandos Telegram]
+
+K --> N[Volta para novo ciclo]
+L --> N
+M --> N
+
+N --> B
+```
+
 <p data-start="308" data-end="438">Sistema de monitoramento de múltiplas conexões de internet usando <strong data-start="374" data-end="391">ESP32 + W5500</strong>, com alarme local e notificações via Telegram.</p>
 <h2 data-start="440" data-end="454">Visão geral</h2>
 <p data-start="455" data-end="578">Este projeto monitora até <strong data-start="481" data-end="518">3 links de internet independentes</strong> (roteadores diferentes).<br data-start="543" data-end="546">
@@ -52,6 +85,11 @@ Quando um link falha, o sistema:</p>
 <p data-start="1085" data-end="1142">Envio via <strong data-start="1095" data-end="1118">Ethernet disponível</strong> (sem depender de Wi-Fi)</p>
 </li>
 </ul>
+
+
+
+
+
 <hr data-start="1144" data-end="1147">
 <h2 data-start="1149" data-end="1170">Hardware utilizado</h2>
 <ul data-start="1171" data-end="1391">
