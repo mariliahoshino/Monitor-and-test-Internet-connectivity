@@ -83,7 +83,7 @@ K --> L[Controle buzzer/sinaleira]
 
 L --> M[Verifica comandos Telegram]
 
-M --> N [Volta para novo ciclo]
+M --> N[Volta para novo ciclo]
 
 N --> B
 ```
