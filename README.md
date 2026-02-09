@@ -273,11 +273,6 @@ N --> B
 </div>
 
 
-https://github.com/Networking-for-Arduino/EthernetENC
-
-https://github.com/dvarrel/ESPping
-https://github.com/marian-craciunescu/ESP32Ping
-
 <hr data-start="218" data-end="221">
 <h1 data-start="223" data-end="249">Fontes principais usadas</h1>
 <h2 data-start="251" data-end="293">1) Telegram Bot API (protocolo oficial)</h2>
